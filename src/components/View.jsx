@@ -30,16 +30,16 @@ function View({uploadVideoResponse,setDropVideoResponse}) {
   // console.log(allVideos);
 
    const dragOver=(e)=>{
-    e.preventDefault()
+    e.preventDefault();
    }
 
    const videoDroped=async(e)=>{
     const {videoId,categoryID}=JSON.parse(e.dataTransfer.getData('data'))
     // console.log(videoId,categoryID);
     const {data}=await getCategoryAPI()
-    const selectedCategory=data.find(item=>item.id==categoryID)
+    const selectedCategory=data.find(item=>item.id == categoryID)
     // console.log(selectedCategory);
-    let result = selectedCategory.allVideos.filter(video=>video.id!==videoId)
+    let result = selectedCategory.allVideos.filter(video=>video.id!== videoId)
     console.log(result);
     let {id,categoryName}=selectedCategory
     let newCategory= {id,categoryName,allVideos:result}
